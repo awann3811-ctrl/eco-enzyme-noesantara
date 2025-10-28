@@ -1,0 +1,433 @@
+/* RESET & FONT */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.7;
+  color: #2f3e46;
+  /* ========================================================= */
+  /* PERUBAHAN 1: Background Gambar Global (Tekstur Daun Halus) */
+  /* ========================================================= */
+  background-image: url('https://images.unsplash.com/photo-1518002179853-294b2a8d1163?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzI0NzJ8MHwxfHNlYXJjaHwyMHx8bGVhZiUyMHRleHR1cmV8ZW58MHx8fHwxNzA4NDUyMDY3fDA&ixlib=rb-4.0.3&q=80&w=1920');
+  background-size: cover; /* Pastikan gambar mengisi seluruh area */
+  background-attachment: fixed; /* Gambar tetap saat scroll */
+  background-color: #f8f9fa; /* Warna fallback jika gambar gagal */
+  /* ========================================================= */
+  scroll-behavior: smooth;
+}
+
+/* UTILITY CLASSES */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 15px;
+}
+
+/* NAVBAR */
+.navbar {
+  background-color: #1b5e20;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s;
+}
+
+.navbar.scrolled {
+    background-color: rgba(27, 94, 32, 0.95);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+}
+
+.navbar h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.8rem;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s, border-bottom 0.3s;
+  position: relative;
+}
+
+.navbar a:hover {
+  color: #c8e6c9;
+  border-bottom: 2px solid #a5d6a7;
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    padding: 0.5rem;
+}
+
+/* HERO SECTION */
+.hero-section {
+  /* =================================================== */
+  /* PERUBAHAN 2: Gambar Latar Belakang Hero yang Relevan */
+  /* =================================================== */
+  background: url('https://images.unsplash.com/photo-1549487922-811c79c29af0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzI0NzJ8MHwxfHNlYXJjaHw3fHxvcmdhbmljJTIwZnJ1aXQlMjBzY3JhcHN8ZW58MHx8fHwxNzA4NDUxNzAzfDA&ixlib=rb-4.0.3&q=80&w=1920') center/cover no-repeat;
+  /* =================================================== */
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+  animation: zoomIn 1.5s ease-out;
+}
+
+.hero-content h2 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+.hero-content p {
+  margin-bottom: 2rem;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+.cta-button {
+  background: #81c784;
+  color: #fff;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.4s ease;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 4px 20px rgba(0, 150, 0, 0.4);
+  animation: pulse 2s infinite;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background: #4caf50;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 150, 0, 0.7);
+  animation: none;
+}
+
+/* CONTENT SECTIONS */
+.content-section {
+  padding: 100px 0;
+  /* ============================================================ */
+  /* Penyesuaian agar konten tetap terlihat di atas background body */
+  /* ============================================================ */
+  background-color: rgba(248, 249, 250, 0.9); /* Sedikit transparan */
+  backdrop-filter: blur(1px); /* Efek blur ringan */
+  /* ============================================================ */
+}
+
+.alternate-bg {
+  /* ============================================================ */
+  /* Penyesuaian agar konten tetap terlihat di atas background body */
+  /* ============================================================ */
+  background-color: rgba(232, 245, 233, 0.9); /* Sedikit transparan */
+  /* ============================================================ */
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: #1b5e20;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+p {
+  text-align: justify;
+  margin-bottom: 15px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* MANFAAT GRID */
+.manfaat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.manfaat-item {
+  background: white;
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.manfaat-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(76, 175, 80, 0.1);
+    z-index: 1;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.4s ease-out;
+    border-radius: 25px;
+}
+
+.manfaat-item:hover::before {
+    transform: scaleY(1);
+}
+
+.manfaat-item * {
+    position: relative;
+    z-index: 2;
+}
+
+.manfaat-item:hover {
+  transform: translateY(-15px) rotateZ(-0.5deg);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.manfaat-item h4 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #2e7d32;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.italic {
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  color: #2e7d32;
+}
+
+/* CARA BUAT LIST */
+.langkah-list {
+  max-width: 800px;
+  margin: 0 auto;
+  list-style: none;
+  padding-left: 0;
+  line-height: 1.8;
+  counter-reset: step-counter;
+}
+
+.langkah-list li {
+    margin-bottom: 25px;
+    position: relative;
+    padding-left: 45px;
+    border-bottom: 1px dashed #c8e6c9;
+    padding-bottom: 15px;
+}
+
+.langkah-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.langkah-list li::before {
+    counter-increment: step-counter;
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background-color: #2e7d32;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* VIDEO SECTION */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.video-container iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* FOOTER */
+footer {
+  background: #1b5e20;
+  color: white;
+  text-align: center;
+  padding: 40px 10px;
+  font-size: 0.95rem;
+}
+
+/* BACK TO TOP BUTTON */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#back-to-top:hover {
+    background-color: #2e7d32;
+    transform: scale(1.1);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.02); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Enhanced Fade-in Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar .container {
+    flex-direction: row;
+  }
+
+  .navbar ul {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+      background-color: #1b5e20;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      padding-bottom: 10px;
+  }
+
+  .navbar ul.active {
+      display: flex;
+  }
+
+  .navbar ul li {
+      margin: 10px 0;
+  }
+
+  .menu-toggle {
+      display: block;
+  }
+
+  .hero-section {
+      height: 70vh;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .content-section {
+      padding: 60px 0;
+  }
+
+  h3 {
+      font-size: 1.5rem;
+  }
+
+  .langkah-list li {
+      padding-left: 35px;
+  }
+
+  .langkah-list li::before {
+      width: 25px;
+      height: 25px;
+      font-size: 1rem;
+  }
+}
