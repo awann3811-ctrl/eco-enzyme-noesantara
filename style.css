@@ -10,7 +10,7 @@ body {
   line-height: 1.7;
   color: #2f3e46;
   /* ========================================================= */
-  /* PERUBAHAN 1: Background Gambar Global (Tekstur Daun Halus) */
+  /* Background Gambar Global (Tekstur Daun Halus) */
   /* ========================================================= */
   background-image: url('https://images.unsplash.com/photo-1518002179853-294b2a8d1163?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzI0NzJ8MHwxfHNlYXJjaHwyMHx8bGVhZiUyMHRleHR1cmV8ZW58MHx8fHwxNzA4NDUyMDY3fDA&ixlib=rb-4.0.3&q=80&w=1920');
   background-size: cover; /* Pastikan gambar mengisi seluruh area */
@@ -86,11 +86,8 @@ body {
 
 /* HERO SECTION */
 .hero-section {
-  /* =================================================== */
-  /* PERUBAHAN 2: Gambar Latar Belakang Hero yang Relevan */
-  /* =================================================== */
+  /* Gambar Latar Belakang Hero yang Relevan */
   background: url('https://images.unsplash.com/photo-1549487922-811c79c29af0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzI0NzJ8MHwxfHNlYXJjaHw3fHxvcmdhbmljJTIwZnJ1aXQlMjBzY3JhcHN8ZW58MHx8fHwxNzA4NDUxNzAzfDA&ixlib=rb-4.0.3&q=80&w=1920') center/cover no-repeat;
-  /* =================================================== */
   height: 90vh;
   display: flex;
   justify-content: center;
@@ -155,21 +152,51 @@ body {
 /* CONTENT SECTIONS */
 .content-section {
   padding: 100px 0;
-  /* ============================================================ */
   /* Penyesuaian agar konten tetap terlihat di atas background body */
-  /* ============================================================ */
   background-color: rgba(248, 249, 250, 0.9); /* Sedikit transparan */
   backdrop-filter: blur(1px); /* Efek blur ringan */
-  /* ============================================================ */
 }
 
+/* ================================================= */
+/* KODE BACKGROUND MANFAAT (alternate-bg) DARI DISKUSI TERAKHIR */
+/* ================================================= */
 .alternate-bg {
-  /* ============================================================ */
-  /* Penyesuaian agar konten tetap terlihat di atas background body */
-  /* ============================================================ */
-  background-color: rgba(232, 245, 233, 0.9); /* Sedikit transparan */
-  /* ============================================================ */
+  padding: 100px 0;
+  
+  /* --- Properti Background Gambar Manfaat --- */
+  background-image: url('https://images.unsplash.com/photo-1596707328608-2e0e49a0d8e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzI0NzJ8MHwxfHNlYXJjaHw3fHxzcHJheSUyMGJvdHxlbnwwfHx8fDE3MDk2NjEyMDN8MA&ixlib=rb-4.0.3&q=80&w=1920');
+  background-size: cover; 
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: scroll; 
+  
+  /* --- Penyesuaian Keterbacaan Konten (Overlay Warna) --- */
+  /* Kita gunakan warna hijau muda semi-transparan untuk overlay agar gambar terlihat samar */
+  background-color: rgba(232, 245, 233, 0.85); 
+  
+  position: relative; 
+  overflow: hidden; 
 }
+
+/* Pseudo-element untuk menciptakan overlay transparan di atas gambar */
+.alternate-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Lapisan overlay warna hijau transparan */
+    background-color: rgba(232, 245, 233, 0.9); 
+    z-index: -1; /* Posisikan di bawah konten utama (teks) */
+}
+
+/* Pastikan konten di dalam section memiliki z-index yang lebih tinggi dari overlay */
+.alternate-bg .container {
+    position: relative;
+    z-index: 1; 
+}
+/* ================================================= */
 
 h3 {
   text-align: center;
@@ -198,7 +225,9 @@ p {
 }
 
 .manfaat-item {
-  background: white;
+  /* Penting: Pastikan latar belakang manfaat-item adalah putih solid
+     agar teks di dalamnya tidak terlalu transparan */
+  background: white; 
   border-radius: 25px;
   padding: 30px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.08);
